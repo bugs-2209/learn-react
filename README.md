@@ -92,16 +92,17 @@ function App() {
         );
     }    
 ```
+
 ```
-    class Person extends React.Component {
-        render() {
-            return (
-                <div className="person">
-                    <h1>Full name: {this.props.fullname}</h1>
-                    <p>Age: {this.props.age}</p> 
-                    <p>Description: {this.props.children}</p> -> Get props children
-                </div>
-            );
-        }
+class Person extends React.Component {
+    render() {
+        return (
+            <div className="person">
+                <h1>Full name: {this.props.fullname}</h1>
+                <p>Age: {this.props.age}</p> 
+                <p>Description: {this.props.children}</p> -> Get props children
+            </div>
+        );
     }
+}
 ```
