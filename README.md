@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+<h1> Lession 1: Những lưu ý trong ReactJS </h1>
+<li>StrictMode: Dùng để tránh những trường hợp không khai báo nhưng vẫn sử dụng</li>
+<li>JSX: Được viết tắt của Javascript Extension (JSX là 1 ngôn ngữ)</li>
+<li>Mỗi 1 thẻ div, h1, h2, h3,... đều là 1 component của ReactJS</li>
+<li>Khi viết trực tiếp style ở thẻ "div" phải viết các thuộc tính theo dạng camelCase và viết theo dạng obj: style: {{ color: "red", backgroundColor: "green" }}</li>
+<li>Các tên sự kiện cũng được viết theo dạng camelCase: onClick, onChange,...</li>
+<li>Khi truyền function vào các sự kiện thì chỉ truyền tên function và không có "()"</li>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Ví dụ 1: Không có tham số truyền vào
 
-## Available Scripts
+```
+    let handleOnClick = () => {
+        console.log("abc");
+    }
+    <button onClick={handleOnClick}>Click</button>
+```
 
-In the project directory, you can run:
+<li>Nếu truyền thêm "()" thì function sẽ tự động thực thi trước khi thao tác event</li>
 
-### `npm start`
+### Ví dụ 2: Nếu có tham số truyền vào
+```
+    let handleOnClick = (name) => {
+        console.log("abc");
+    }
+    <button onClick={() => handleOnClick("Bug")}>Click</button>
+```
+  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<li>Nếu muốn bọc 2 div vào nhau thì sử dụng React.Fragment</li> 
+<h3>Ví dụ in 1 list table: </h3>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+    <div>Hello</div>
+    <li>Nguyen Van A</li>
+    <li>Nguyen Van B</li>
+    <li>Nguyen Van C</li>
 
-### `npm test`
+    // Coding Example
+    import './App.css';
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    function App() {
+        return (
+            <div className="App">
+            Hello
+            <UserList />
+            </div>
+        );
+    }
 
-### `npm run build`
+    export default App;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    function UserList() {
+        return (
+            <>
+                <li>Nguyen Van A</li>
+                <li>Nguyen Van B</li>
+                <li>Nguyen Van C</li>
+            </>
+        );
+    }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    export default App;
+```
 
-### `npm run eject`
+### React có 2 loại Component :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<ul>
+    <li>Class Component</li>
+    <li>Function Component</li>
+</ul>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Props :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<ul>
+    <li>Giống attribute của HTML</li>
+    <li>Chỉ có thể xem(get) data chứ không thể sủa(edit)-> immutable. Nếu thay đổi thì chỉ thay đổi từ đầu khi khai báo component</li>
+    <li>Truyền data từ thằng cha xuống thằng con</li>
+    <li>props.children được khai báo giữa 2 thẻ component</li>
+</ul>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h4>Ví dụ khai báo và sử dụng Prop.Children</h4>
+```
+    function App() {
+        return (
+            <Person fullname="Nguyen Van A" age="28" />
+            <Person fullname="Nguyen Van B" age="27">
+                Is Description -> props.children
+            </Person>
+            <Person fullname="Nguyen Van C" age="26" />
+            </div>
+        );
+    }
+    
+    class Person extends React.Component {
+        render() {
+            return (
+                <div className="person">
+                    <h1>Full name: {this.props.fullname}</h1>
+                    <p>Age: {this.props.age}</p> 
+                    <p>Description: {this.props.children}</p> -> Get props children
+                </div>
+            );
+        }
+    }
+```
