@@ -80,6 +80,7 @@
 </ul>
 
 <h4>Ví dụ khai báo và sử dụng Prop.Children</h4>
+
 ``` 
 function App() {
         return (
