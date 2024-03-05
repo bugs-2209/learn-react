@@ -80,8 +80,7 @@
 </ul>
 
 <h4>Ví dụ khai báo và sử dụng Prop.Children</h4>
-```
-    function App() {
+``` function App() {
         return (
             <Person fullname="Nguyen Van A" age="28" />
             <Person fullname="Nguyen Van B" age="27">
