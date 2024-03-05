@@ -8,7 +8,7 @@
 
 ### Ví dụ 1: Không có tham số truyền vào
 
-```
+```typescript jsx
     let handleOnClick = () => {
         console.log("abc");
     }
@@ -18,7 +18,7 @@
 <li>Nếu truyền thêm "()" thì function sẽ tự động thực thi trước khi thao tác event</li>
 
 ### Ví dụ 2: Nếu có tham số truyền vào
-```
+```typescript jsx
     let handleOnClick = (name) => {
         console.log("abc");
     }
@@ -29,7 +29,7 @@
 <li>Nếu muốn bọc 2 div vào nhau thì sử dụng React.Fragment</li> 
 <h3>Ví dụ in 1 list table: </h3>
 
-```
+```typescript jsx
     <div>Hello</div>
     <li>Nguyen Van A</li>
     <li>Nguyen Van B</li>
@@ -81,7 +81,7 @@
 
 <h4>Ví dụ khai báo và sử dụng Prop.Children</h4>
 
-``` 
+```typescript jsx
 function App() {
         return (
             <Person fullname="Nguyen Van A" age="28" />
@@ -94,7 +94,7 @@ function App() {
     }    
 ```
 
-```
+```typescript jsx
 class Person extends React.Component {
     render() {
         return (
@@ -106,4 +106,6 @@ class Person extends React.Component {
         );
     }
 }
+
+export default Person;
 ```
