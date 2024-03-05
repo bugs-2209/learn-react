@@ -90,8 +90,9 @@
             <Person fullname="Nguyen Van C" age="26" />
             </div>
         );
-    }
-    
+    }    
+```
+```
     class Person extends React.Component {
         render() {
             return (
